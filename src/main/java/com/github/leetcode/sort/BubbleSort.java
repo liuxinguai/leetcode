@@ -1,4 +1,4 @@
-package com.github.leetcode.base;
+package com.github.leetcode.sort;
 
 /**
  * <ul>冒泡排序法：循环选择并比较数组相邻两个元素之间的大小，若当前元素大于下一个相邻元素，则交换相邻位置</ul>

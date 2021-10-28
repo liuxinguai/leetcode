@@ -9,13 +9,13 @@ public class DichotomousFind {
         int left = 0;
         int right = array.length - 1;
         while (array[left] < num && array[right] > num) {
-            int mid = (right + left) % 2 == 0 ? (right + left) / 2 : (right + left) / 2 + 1;
+            int mid = left + ((right - left) >> 1);
             if (array[mid] == num) {
                 return true;
             } else if (array[mid] > num) {
-                right = mid;
+                right = mid - 1;
             } else {
-                left = mid;
+                left = mid + 1;
             }
         }
         if (array[left] == num || array[right] == num) {
@@ -37,13 +37,13 @@ public class DichotomousFind {
         int left = 0;
         int right = array.length - 1;
         while (array[left] > array[left + 1] && array[right] > array[right - 1]) {
-            int mid = (right + left) % 2 == 0 ? (right + left) / 2 : (right + left) / 2 + 1;
+            int mid = left + ((right - left) >> 1);
             if (array[mid] < array[mid - 1] && array[mid] < array[mid + 1]) {
                 return mid;
             } else if (array[mid] > array[mid - 1]) {
-                right = mid;
+                right = mid - 1;
             } else if (array[mid] > array[mid + 1]) {
-                left = mid;
+                left = mid + 1;
             }
         }
         if (array[left] < array[left + 1]) {

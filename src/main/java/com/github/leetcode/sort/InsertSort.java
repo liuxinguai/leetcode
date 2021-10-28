@@ -1,4 +1,4 @@
-package com.github.leetcode.base;
+package com.github.leetcode.sort;
 
 /**
  * <ul>插入排序法：循环将数组中的元素插入到有序数组的合适位置</ul>

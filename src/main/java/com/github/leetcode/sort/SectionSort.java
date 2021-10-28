@@ -1,4 +1,4 @@
-package com.github.leetcode.base;
+package com.github.leetcode.sort;
 
 /**
  * <ul> 选择排序法：每次循环选择出数组(踢出掉上次循环所选择出来的最小数)中的最小数并放入开始排好序数组的末尾<ul/>
