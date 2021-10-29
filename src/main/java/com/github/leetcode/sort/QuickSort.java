@@ -75,16 +75,33 @@ public class QuickSort {
         arr[j] = temp;
     }
 
+
+    public int findK(int[] arr, int k) {
+        int left = -1, index = 0;
+        while (index < arr.length) {
+            if (arr[index] < k) {
+                swap(arr,++left,index++);
+            } else {
+                index ++;
+            }
+        }
+        return left;
+    }
+
     public static void main(String[] args) {
         QuickSort quickSort = new QuickSort();
         int[] arr = new int[] {3,4,5,1,4,5,6,7,8,9,1,2,3,4,6,9,10};
-        quickSort.partition(arr,8);
-        for (int curr : arr) {
-            System.out.println(curr);
-        }
-        quickSort.sort(arr);
-        for (int curr : arr) {
-            System.out.println(curr);
+//        quickSort.partition(arr,8);
+//        for (int curr : arr) {
+//            System.out.println(curr);
+//        }
+//        quickSort.sort(arr);
+//        for (int curr : arr) {
+//            System.out.println(curr);
+//        }
+        int k = quickSort.findK(arr, 7);
+        for (int i = 0; i <= k; i++) {
+            System.out.println(arr[i]);
         }
     }
 
