@@ -75,7 +75,20 @@ public class QuickSort {
         arr[j] = temp;
     }
 
-
+    /**
+     * 将一个数组按照如下规则排序：
+     *      将大于num的数放置到数组的右侧
+     *      将小于等于num的数放置到数组的左侧
+     * 具体做法：
+     *      准备三个变量：
+     *          一个变量left表示：>=num的最大边界
+     *          一个变量index表示：当前数组的下标
+     *      当数组中当前元素 arr[index] <= num ==> 将当前数组的下标值与左边最大边界的值做交换，数组下标往前移动，左边最大边界往前移，即：swap(arr[],++left,index++);
+     *      当数组中当前元素 arr[index] > num ==> 最大边界不移动，index++
+     *
+     * @param arr 数组
+     * @return 小于k值的最左侧下标
+     */
     public int findK(int[] arr, int k) {
         int left = -1, index = 0;
         while (index < arr.length) {
