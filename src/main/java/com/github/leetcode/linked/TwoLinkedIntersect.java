@@ -2,8 +2,10 @@ package com.github.leetcode.linked;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * @author liuxg
+ */
 public class TwoLinkedIntersect<V> {
-
 
 
     public Node<V> intersect(Node<V> head1, Node<V> head2) {
@@ -24,6 +26,9 @@ public class TwoLinkedIntersect<V> {
                 }
                 slowNode = slowNode.next;
                 fastNode = fastNode.next.next;
+            }
+            if (slowNode == loop1) {
+                return loop2;
             }
         } else if (loop1 == null && loop2 == null){
             int nodeNum = 0;
@@ -66,7 +71,7 @@ public class TwoLinkedIntersect<V> {
         if (head == null || head.next == null) {
             return null;
         }
-        Node<V> fastNode = head, slowNode = head;
+        Node<V> fastNode = head.next.next, slowNode = head.next;
         while (slowNode.next != null && fastNode.next.next != null) {
             if (slowNode == fastNode) {
                 break;
@@ -74,11 +79,8 @@ public class TwoLinkedIntersect<V> {
             slowNode = slowNode.next;
             fastNode = fastNode.next.next;
         }
-        fastNode = head;
         if (slowNode == fastNode) {
-            if (slowNode == head) {
-                return head;
-            }
+            fastNode = head;
             while (slowNode != fastNode) {
                 slowNode = slowNode.next;
                 fastNode = fastNode.next;
@@ -93,9 +95,9 @@ public class TwoLinkedIntersect<V> {
     @AllArgsConstructor
     static class Node<V> {
 
-        private V value;
+        public V value;
 
-        private Node<V> next;
+        public Node<V> next;
     }
 
 }
