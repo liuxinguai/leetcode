@@ -13,7 +13,7 @@ public class StackTraverse {
      * @param head 头节点
      * @param <V> 节点值
      */
-    public <V> void reOrderTraverse(Node<V> head) {
+    public <V extends Comparable> void reOrderTraverse(Node<V> head) {
         if (head == null) {
             return;
         }
@@ -36,7 +36,7 @@ public class StackTraverse {
      * @param head 头节点
      * @param <V> 节点值
      */
-    public <V> void lastTraverse(Node<V> head) {
+    public <V extends Comparable> void lastTraverse(Node<V> head) {
         if (head == null) {
             return;
         }
@@ -63,7 +63,7 @@ public class StackTraverse {
      * @param head 二叉数头节点
      * @param <V> 节点值
      */
-    public <V> void middleTraverse(Node<V> head) {
+    public <V extends Comparable> void middleTraverse(Node<V> head) {
         Stack<Node<V>> stack = new Stack<>();
         while (!stack.isEmpty() || head != null) {
             if (head != null) {

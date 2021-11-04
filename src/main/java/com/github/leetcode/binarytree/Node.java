@@ -3,7 +3,7 @@ package com.github.leetcode.binarytree;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Node<V> {
+public class Node<V extends Comparable> {
 
     public V value;
 

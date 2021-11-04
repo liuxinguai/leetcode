@@ -17,7 +17,7 @@ public class RecursionTraverse {
      * @param handle 节点处理器
      * @param <V> 二叉数节点值泛型
      */
-    protected <V> void recursionTraverse(Node<V> head, RecursionHandle<V> handle) {
+    protected <V extends Comparable> void recursionTraverse(Node<V> head, RecursionHandle<V> handle) {
         //页节点的的左孩子点和右孩子节点都为null，即结束递归
         if (head == null) {
             return;
@@ -54,7 +54,7 @@ public class RecursionTraverse {
      * @param handle 处理节点node过程
      * @param <V> 节点值
      */
-    private <V> void widthTraverse(Node<V> head,RecursionHandle<V> handle) {
+    private <V extends Comparable> void widthTraverse(Node<V> head,RecursionHandle<V> handle) {
         Queue<Node<V>> queue = new LinkedList<>();
         queue.add(head);
         while (!queue.isEmpty()) {
@@ -76,7 +76,7 @@ public class RecursionTraverse {
      * @param head 二叉树头节点
      * @param <V> 二叉树泛型值
      */
-    public <V> void reOrderPrintln(Node<V> head) {
+    public <V extends Comparable> void reOrderPrintln(Node<V> head) {
         recursionTraverse(head, new RecursionHandle<V>() {
             @Override
             public void handle(Node<V> node) {
@@ -95,7 +95,7 @@ public class RecursionTraverse {
      * @param head 二叉树头节点
      * @param <V> 二叉树泛型值
      */
-    public <V> void middleOrderPrintln(Node<V> head) {
+    public <V extends Comparable> void middleOrderPrintln(Node<V> head) {
         recursionTraverse(head, new RecursionHandle<V>() {
             @Override
             public void handle(Node<V> node) {
@@ -114,7 +114,7 @@ public class RecursionTraverse {
      * @param head 二叉树头节点
      * @param <V> 二叉树泛型值
      */
-    public <V> void lastOrderPrintln(Node<V> head) {
+    public <V extends Comparable> void lastOrderPrintln(Node<V> head) {
         recursionTraverse(head, new RecursionHandle<V>() {
             @Override
             public void handle(Node<V> node) {
@@ -134,7 +134,7 @@ public class RecursionTraverse {
      * @param head 二叉树头节点
      * @param <V> 二叉树泛型值
      */
-    public <V> void widthPrintln(Node<V> head) {
+    public <V extends Comparable> void widthPrintln(Node<V> head) {
         recursionTraverse(head, new RecursionHandle<V>() {
             @Override
             public void handle(Node<V> node) {
@@ -149,7 +149,7 @@ public class RecursionTraverse {
     }
 
 
-    interface RecursionHandle<V> {
+    interface RecursionHandle<V extends Comparable> {
 
         /**
          * 处理递归的节点
