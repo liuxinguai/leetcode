@@ -83,3 +83,50 @@
    3. 将大于num的放在moreStart~moreEnd过程，若moreStar=null,moreStar=moreEnd=node(小于num的第一个数)，若moreStar!=null,moreEnd.next=node(小于num的节点,node.next = null),moreEnd = node
    4. 遍历完成后，将lessEnd.next = equalsStart,equlasEnd.next = moreStart
 ## 二叉树
+>树的遍历：先序、中序、后序、前序遍历
+1. 先序遍历：先访问根节点，再先序遍历左子树、后序遍历右子树
+2. 中序遍历：中序遍历左子树，访问根节点、中序遍历右子树
+3. 后续遍历：后续遍历左子树，中序遍历右子树，再访问根节点
+4. 前序遍历：按照从上到下顺序依次访问树中的每一个节点，树的同一层：按先左后右的顺序进行
+>树遍历的递归序：通过递归来实现树的遍历：每个节点都需要通过递归函数三次，通过这三次可以得到一个树的递归序
+
+1. 比如：一个三节点树（A，B，C）的递归序：A1、B1、B2、B3、A2、C1、C2、C3、A3
+
+
+    protected <V extends Comparable> void recursionTraverse(Node<V> head, RecursionHandle<V> handle) {
+        //页节点的的左孩子点和右孩子节点都为null，即结束递归
+        if (head == null) {
+            return;
+        }
+        if (handle.type() == Type.WIDTH) {
+            widthTraverse(head,handle);
+            return;
+        }
+    
+        // 1 此地处理node为先序遍历：先序遍历：每个子树先根节点，左子树在进行先序遍历，右子树进行先序遍历
+        if (handle.type() == Type.START) {
+            handle.handle(head);
+        }
+        recursionTraverse(head.left,handle);
+    
+    
+        // 2 此地处理node为中序遍历：中序遍历：每个子树左子数进行中序遍历，根节点，右子树进行中序遍历
+        if (handle.type() == Type.MIDDLE) {
+            handle.handle(head);
+        }
+        recursionTraverse(head.right,handle);
+    
+        // 3 此地处理node为后序遍历：后序遍历：每个子树左子数进行后序遍历，右子树进行后序遍历，根节点
+        if (handle.type() == Type.END) {
+            handle.handle(head);
+        }
+    } 
+
+>  树的解题套路：
+1. 将一个树的问题划分成等规模的两个左右子树的问题，然后再通过决策左右子树问题得到总问题的答案
+
+##暴力尝试
+1. 把问题转化成规模缩小了的同类问题的子问题
+2. 有明确的不需要继续进行递归的条件
+3. 有当得到了子问题的结果之后的决策过程
+4. 不记录每一个子问题的解
