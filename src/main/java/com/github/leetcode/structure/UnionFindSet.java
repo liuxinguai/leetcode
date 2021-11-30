@@ -12,7 +12,6 @@ import java.util.Stack;
  */
 public class UnionFindSet<V> {
 
-
     /**节点*/
     private Map<V, Element<V>> elementMap = new HashMap<>();
 
@@ -59,7 +58,7 @@ public class UnionFindSet<V> {
             stack.push(element);
             element = parentMap.get(element);
         }
-        while (stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             parentMap.put(stack.pop(),element);
         }
         return element;

@@ -5,7 +5,6 @@ package com.github.leetcode.structure;
  */
 public class KMP {
 
-
     public int getIndexOf(String source, String search) {
         if (source == null || search == null || source.length() < search.length()) {
             return -1;
