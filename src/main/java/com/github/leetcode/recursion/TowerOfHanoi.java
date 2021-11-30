@@ -26,9 +26,4 @@ public class TowerOfHanoi {
         }
     }
 
-    public static void main(String[] args) {
-        TowerOfHanoi towerOfHanoi = new TowerOfHanoi();
-        towerOfHanoi.move("左","右","中",4);
-    }
-
 }

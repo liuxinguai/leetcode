@@ -8,11 +8,12 @@ import lombok.AllArgsConstructor;
  * 或者采用套路的解法：将子树的节点根节点，划分成左右两个子树，若两个子树都为搜索二叉树，且左子树的最大值小于当前节点的值，右子树的最小值大于这个节点的值，则以该节点为根的子树为搜索二叉树，并得出这个树的最小值和最大值
  * @author liuxg
  */
+@SuppressWarnings("rawtypes")
 public class SearchTree {
 
 
     @AllArgsConstructor
-    class SearcheInfo<V extends Comparable> {
+    static class SearcheInfo<V extends Comparable> {
 
         protected V min;
 
@@ -124,13 +125,14 @@ public class SearchTree {
 
         /**
          * 二叉树搜索全局上下文
-         * @return
+         * @return SearchTreeContext
          */
+        @Deprecated
         SearchTreeContext<V> getContext();
 
         /**
          * 二叉树遍历的方式
-         * @return
+         * @return Type
          */
         Type type();
     }

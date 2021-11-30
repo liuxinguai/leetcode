@@ -7,7 +7,6 @@ import java.util.Stack;
  */
 public class ReverseStack {
 
-
     public void reverse(Stack<Integer> stack) {
         if (stack.isEmpty()) {
             return;
@@ -16,7 +15,6 @@ public class ReverseStack {
         reverse(stack);
         stack.push(item);
     }
-
 
     protected Integer processor(Stack<Integer> stack) {
         int result = stack.pop();

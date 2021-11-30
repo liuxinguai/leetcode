@@ -1,10 +1,13 @@
 package com.github.leetcode.recursion;
 
+/**
+ * @author xinguai.liu
+ */
 public class CodeToString {
 
 
     public int codeToStr(String str) {
-        return process(str.toCharArray(),str.length());
+        return process(str.toCharArray(),0);
     }
 
     protected int process(char[] codes, int index) {

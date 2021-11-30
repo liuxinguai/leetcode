@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author liuxg
  */
-public class KruskalGraph {
+public class Kruskal {
 
 
     class UnionFind<V> {
@@ -14,7 +14,11 @@ public class KruskalGraph {
 
         public UnionFind(Graph<V> graph) {
             this.nodeListMap = new HashMap<>(graph.nodes.size());
-            graph.nodes.values().forEach(vNode -> nodeListMap.put(vNode,Collections.singletonList(vNode)));
+            graph.nodes.values().forEach(vNode -> {
+                ArrayList list = new ArrayList<>();
+                list.add(vNode);
+                nodeListMap.put(vNode,list);
+            });
         }
 
         private boolean isSameSet(Node<V> fromNode, Node<V> toNode) {
@@ -22,10 +26,12 @@ public class KruskalGraph {
         }
 
         private void union(Node<V> fromNode, Node<V> toNode) {
-            nodeListMap.get(toNode).forEach(node -> {
-                nodeListMap.get(fromNode).add(node);
-                nodeListMap.put(node,nodeListMap.get(fromNode));
-            });
+            List<Node<V>> toNodes = nodeListMap.get(toNode);
+            List<Node<V>> fromNodes = nodeListMap.get(fromNode);
+            for(Node node : toNodes) {
+                fromNodes.add(node);
+                nodeListMap.put(node,fromNodes);
+            }
         }
 
         /**
@@ -49,11 +55,12 @@ public class KruskalGraph {
      * @param <V> 值
      * @return 最小生成树的路径
      */
-    public <V> Set<Edge<V>> kruskal(Graph<V> graph) {
+    public <V> Set<Edge<V>> generalMinTree(Graph<V> graph) {
         Set<Edge<V>> kruskalEdgs = new HashSet<>(graph.edges.size());
         //将图中的所有边放入小根堆中
         PriorityQueue<Edge<V>> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(o -> o.weight));
         UnionFind<V> unionFind = new UnionFind<>(graph);
+        priorityQueue.addAll(graph.edges);
         while (!priorityQueue.isEmpty()) {
             //取出当前小根堆中最小的边
             Edge<V> poll = priorityQueue.poll();

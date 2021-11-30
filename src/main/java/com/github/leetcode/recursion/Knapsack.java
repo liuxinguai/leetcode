@@ -13,7 +13,7 @@ public class Knapsack {
         if (alreadyWeight >= bag || index == weight.length) {
             return 0;
         }
-        return Math.max(values[index] + processor(weight, values, index + 1, alreadyWeight + weight[index], bag),
+        return Math.max(alreadyWeight + weight[index] <= bag ? values[index] + processor(weight, values, index + 1, alreadyWeight + weight[index], bag) : 0,
                 processor(weight,values,index + 1,alreadyWeight,bag));
     }
 

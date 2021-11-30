@@ -8,8 +8,7 @@ import java.util.*;
  */
 public class Dijkstra {
 
-
-    public Map<Node,Integer> sort(Node root) {
+    public Map<Node,Integer> minDistince(Node root) {
         //图中所有节点到root节点的距离的集合
         Map<Node,Integer> distanceMap = new HashMap<>();
         distanceMap.put(root,0);
@@ -23,7 +22,7 @@ public class Dijkstra {
             for (Object edge : minDistinceNode.edges) {
                 Edge nodeEdge = (Edge) edge;
                 if (!distanceMap.containsKey(nodeEdge.to)) {
-                    distanceMap.put(nodeEdge.to,nodeEdge.weight);
+                    distanceMap.put(nodeEdge.to,nodeEdge.weight  + distanceMap.get(nodeEdge.from));
                 }
                 //更新已知某个节点到root的最短距离
                 distanceMap.put(nodeEdge.to,Math.min(distanceMap.get(nodeEdge.to),distance + nodeEdge.weight));

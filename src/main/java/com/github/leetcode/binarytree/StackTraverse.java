@@ -5,6 +5,7 @@ import java.util.Stack;
 /**
  * @author liuxg
  */
+@SuppressWarnings("rawtypes")
 public class StackTraverse {
 
 

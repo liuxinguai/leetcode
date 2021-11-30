@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 /**
  * @author liuxg
  */
-public class GraphTraverse {
+public class Traverse {
 
 
     /**
@@ -52,14 +52,14 @@ public class GraphTraverse {
         Set<Node<V>> processed = new HashSet<>();
         stack.add(head);
         while (!stack.isEmpty()) {
-            Node<V> peek = stack.peek();
-            if (!processed.contains(peek)) {
-                processed.add(peek);
-                consumer.accept(peek);
+            Node<V> pop = stack.pop();
+            if (!processed.contains(pop)) {
+                processed.add(pop);
+                consumer.accept(pop);
             }
-            for (Node<V> node : peek.nextNodes) {
+            for (Node<V> node : pop.nextNodes) {
                 if (!processed.contains(node)) {
-                    stack.add(peek);
+                    stack.add(pop);
                     stack.add(node);
                     break;
                 }

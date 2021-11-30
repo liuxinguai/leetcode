@@ -6,9 +6,9 @@ import java.util.*;
  * 拓扑排序算法：将一个无环的有向图变为有序
  * @author liuxg
  */
-public class TopologySort {
+public class Topology {
 
-    public <V> List<Node<V>> topology(Graph<V> graph) {
+    public <V> List<Node<V>> getNoRelyNodes(Graph<V> graph) {
         //拓扑排序后的结点
         List<Node<V>> topologys = new ArrayList<>(graph.nodes.size());
         //没有入度的哈希表

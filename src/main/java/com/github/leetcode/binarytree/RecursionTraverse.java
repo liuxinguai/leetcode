@@ -7,6 +7,7 @@ import java.util.Queue;
  * 递归的方式实现二叉树的先、中、后序遍历
  * @author liuxg
  */
+@SuppressWarnings("rawtypes")
 public class RecursionTraverse {
 
 

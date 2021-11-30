@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * @author liuxg
  */
-public class PrimGraph {
+public class Prim {
 
 
     /**
@@ -17,7 +17,7 @@ public class PrimGraph {
      * @param <V> 值
      * @return 最小生成树的路径
      */
-    public <V> Set<Edge<V>> prim(Graph<V> graph) {
+    public <V> Set<Edge<V>> generalMinTree(Graph<V> graph) {
         //最小生成树的边
         Set<Edge<V>> primSet = new HashSet<>(graph.edges.size());
         //已参与到最小生成树中结点
@@ -38,7 +38,7 @@ public class PrimGraph {
                     if (!nodeSet.contains(toNode)) {
                         primSet.add(poll);
                         nodeSet.add(toNode);
-                        primSet.addAll(toNode.edges);
+                        priorityQueue.addAll(toNode.edges);
                     }
                 }
             }
