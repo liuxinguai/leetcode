@@ -27,6 +27,14 @@ public class KMP {
         return searchIndex == searchArray.length ? sourceIndex - searchIndex : -1;
     }
 
+    /**
+     * 子串最长匹配前缀：
+     *      最长匹配前缀的含义：
+     *              比如：abcdefabcdemf,此时m的位置处的最长匹配前缀：4，m的下标为：12，f的最长匹配前缀是：0
+     *
+     * @param searchArray
+     * @return
+     */
     private int[] getNextArray(char[] searchArray) {
         int[] nextArray = new int[searchArray.length];
         nextArray[0] = -1;
