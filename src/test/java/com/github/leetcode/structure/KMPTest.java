@@ -8,6 +8,6 @@ public class KMPTest {
     public void test() {
         KMP kmp = new KMP();
         System.out.println(kmp.getIndexOf("liuxg","xg2"));
-        System.out.println(kmp.getIndexOf("liuxg","xg"));
+        System.out.println(kmp.getIndexof("liuxg","xg"));
     }
 }

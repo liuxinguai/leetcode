@@ -53,5 +53,46 @@ public class KMP {
         return nextArray;
     }
 
+    public int getIndexof(String str, String search) {
+        if (str == null || search == null || str.trim().equals("") || search.trim().equals("")) {
+            return -1;
+        }
+        char[] searchArray = search.toCharArray();
+        char[] strArray = str.toCharArray();
+        int[] longest = longest(searchArray);
+        int strIndex = 0, searchIndex = 0;
+        while (strIndex < strArray.length && searchIndex < searchArray.length) {
+            if (searchArray[searchIndex] == strArray[strIndex]) {
+                searchIndex ++;
+                strIndex ++;
+            } else if (longest[searchIndex] != -1) {
+                searchIndex = longest[searchIndex];
+            } else {
+                strIndex ++;
+            }
+        }
+        return searchIndex == searchArray.length? strIndex - searchIndex : -1;
+    }
+
+
+    protected int[] longest(char[] str) {
+        int[] longest = new int[str.length];
+        longest[0] = -1;
+        longest[1] = 0;
+        int index = 2;
+        //longest[index - 1] == longest[1] = 0
+        int match = 0;
+        while (index < longest.length) {
+            if (str[index - 1] == str[match]) {
+                longest[index ++] = ++ match;
+            } else if (longest[match] != -1) {
+                match = longest[match];
+            } else {
+                longest[index ++] = match;
+            }
+        }
+        return longest;
+    }
+
 
 }
