@@ -99,15 +99,40 @@ public class MirrorsTraverse {
                     mostRight.right = cur;
                     cur = cur.left;
                 } else {
-                    System.out.println(cur.value);
                     cur = cur.right;
                     mostRight.right = null;
+                    reversePrintln(cur.left);
                 }
             } else {
-                System.out.println(cur.value);
                 cur = cur.right;
             }
         }
+        reversePrintln(head);
+    }
+
+    protected <V extends Comparable> void reversePrintln(Node<V> cur) {
+        cur = reverse(cur);
+        Node<V> node = cur;
+        while (node != null) {
+            System.out.println(node.value);
+            node = node.right;
+        }
+        reverse(cur);
+    }
+
+    protected <V extends Comparable> Node<V> reverse(Node<V> cur) {
+        Node<V> head = null,right;
+        while (cur != null && (right = cur.right) != null) {
+            cur.right = right.right;
+            right.right = cur;
+            cur = cur.right;
+            right.right.right = head;
+            head = right;
+        }
+        if (cur != null) {
+            cur.right = head;
+        }
+        return cur;
     }
 
 

@@ -23,4 +23,11 @@ public class MirrorsTraverseTest {
         mirrorsTraverse.middleorder(builderBinaryTree());
     }
 
+
+    @Test
+    public void testpostorder() {
+        MirrorsTraverse mirrorsTraverse = new MirrorsTraverse();
+        mirrorsTraverse.postorder(builderBinaryTree());
+    }
+
 }
