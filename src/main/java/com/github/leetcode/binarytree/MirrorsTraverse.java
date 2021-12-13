@@ -3,9 +3,10 @@ package com.github.leetcode.binarytree;
 /**
  * @author xinguai.liu
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class MirrorsTraverse {
 
-
+    @Deprecated
     public <V extends Comparable> void traverse(Node<V> head) {
         Node<V> cur = head;
         while (cur != null) {
@@ -99,9 +100,10 @@ public class MirrorsTraverse {
                     mostRight.right = cur;
                     cur = cur.left;
                 } else {
+                    Node node = cur;
                     cur = cur.right;
                     mostRight.right = null;
-                    reversePrintln(cur.left);
+                    reversePrintln(node.left);
                 }
             } else {
                 cur = cur.right;
@@ -131,8 +133,9 @@ public class MirrorsTraverse {
         }
         if (cur != null) {
             cur.right = head;
+            head = cur;
         }
-        return cur;
+        return head;
     }
 
 
