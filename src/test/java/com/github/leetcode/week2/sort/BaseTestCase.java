@@ -21,4 +21,8 @@ public class BaseTestCase extends TestCase {
         System.out.println(data);
     }
 
+    @Override
+    public void tearDown() throws Exception {
+        System.out.println(data);
+    }
 }
