@@ -25,18 +25,15 @@ public class MergeSort implements Sort<Integer> {
 
     protected void merge(List<Integer> data,int left, int mid,int right) {
         List<Integer> help = new ArrayList<>(right - left + 1);
-        int index = 0,l = left,r = mid + 1;
+        int l = left,r = mid + 1;
         while (l <= mid && r <= right) {
             help.add(data.get(l) <= data.get(r) ? data.get(l++) :data.get(r++));
-            index ++;
         }
         while (l <= mid) {
             help.add(data.get(l++));
-            index ++;
         }
         while (r <= right) {
             help.add(data.get(r++));
-            index ++;
         }
         for (int i = 0; i < help.size(); i++) {
             data.set(left++, help.get(i));
