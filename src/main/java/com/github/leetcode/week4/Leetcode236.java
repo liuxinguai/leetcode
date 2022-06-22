@@ -1,9 +1,10 @@
 package com.github.leetcode.week4;
 
 /**
+ * 二叉树的最近公共祖先
  * @author xinguai.liu
  */
-public class Leetcode223 {
+public class Leetcode236 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null || root == p || root == q) return root;
@@ -13,7 +14,5 @@ public class Leetcode223 {
         if(right == null) return left;
         return root;
     }
-
-
 
 }
